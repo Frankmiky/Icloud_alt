@@ -80,6 +80,7 @@
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
         destinationType: destinationType.FILE_URI,pictureSource:pictureSource.CAMERA  });
+        document.getElementById('p1').innerHTML= test;
     }
 
     // A button will call this function
@@ -105,7 +106,7 @@
       alert('Failed because...: ' + message);
     }
     
-    document.getElementById('p1').innerHTML= test;
+    
 
     </script>
     
