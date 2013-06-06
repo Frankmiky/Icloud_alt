@@ -7,6 +7,9 @@
    
   </head>
   <body>
+  
+    <p>L'image est à cet endroit: </p>
+    <p id="p1">L'image est à cet endroit: </p>
    <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -99,8 +102,7 @@
     document.getElementById('p1').innerHTML= test;
 
     </script>
-    <p>L'image est à cet endroit: </p>
-    <p id="p1">L'image est à cet endroit: </p>
+    
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
