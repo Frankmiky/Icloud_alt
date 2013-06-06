@@ -22,23 +22,23 @@
 
     // Called when a photo is successfully retrieved
     //
-    function onPhotoDataSuccess(imageData) {
+    //--function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64 encoded image data
       // console.log(imageData);
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
+      //--var smallImage = document.getElementById('smallImage');
 
       // Unhide image elements
       //
-      smallImage.style.display = 'block';
+      //--smallImage.style.display = 'block';
 
       // Show the captured photo
       // The inline CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
+      //--smallImage.src = "data:image/jpeg;base64," + imageData;
+    //--}
 
     // Called when a photo is successfully retrieved
     //
@@ -64,16 +64,16 @@
     //
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,pictureSource:pictureSource.CAMERA  });
     }
 
     // A button will call this function
     //
     function capturePhotoEdit() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.FILE_URI });
     }
 
     // A button will call this function
@@ -88,7 +88,7 @@
     // Called if something bad happens.
     // 
     function onFail(message) {
-      alert('Failed because: ' + message);
+      alert('Failed because...: ' + message);
     }
 
     </script>
@@ -98,7 +98,7 @@
     <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <!--img style="display:none;width:60px;height:60px;" id="smallImage" src="" /-->
     <img style="display:none;" id="largeImage" src="" />
   </body>
 </html>
