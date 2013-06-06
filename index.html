@@ -8,6 +8,7 @@
 
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
+    var test;
 
     // Wait for Cordova to connect with the device
     //
@@ -58,6 +59,7 @@
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
+      test=imageURI;
     }
 
     // A button will call this function
@@ -90,10 +92,14 @@
     function onFail(message) {
       alert('Failed because...: ' + message);
     }
+    
+    document.getElementById('p1').innerHTML= test;
 
     </script>
   </head>
   <body>
+    <p>L'image est à cet endroit: </p>
+    <p id="p1">L'image est à cet endroit: </p>
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
