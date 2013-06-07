@@ -12,6 +12,7 @@
       function init()
       {
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+            alert("Satrt...!!")
       }
     
 
