@@ -67,7 +67,7 @@
       // convert the String imageData to a FileEntry
          var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          
-          fileEntry.copyTo(picturesStore,date+".jpg",successCallback,failCallback);
+          fileEntry.copyTo(picturesStore,"date.jpg",successCallback,failCallback);
          
          //call back functions
         function successCallback(entry) {
