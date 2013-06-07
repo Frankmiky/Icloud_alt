@@ -24,13 +24,18 @@
       } 
         
       function onGetDirectorySuccess(dir)
-      { 
-          
+      {  
          alert("Created dir "+dir.name));
          console.log("Created dir "+dir.name); 
          picturesStore = dir;
-        
       }
+      
+      function onGetDirectoryFail(error) 
+      {
+        alert("Error creating directory "+error.code);
+        console.log("Error creating directory "+error.code); 
+      } 
+      
     // Called when a photo is successfully retrieved DATA_URL
     function onPhotoDataSuccess(imageData)
     {
@@ -73,16 +78,8 @@
         function failCallback(error) {
             alert("Dommage! Copie echouee"+error.code);
         }
-      
-      } 
-
-      function onGetDirectoryFail(error) 
-      {
-        alert("Error creating directory "+error.code);
-        console.log("Error creating directory "+error.code); 
-      } 
+       
     }
- 
     // Called when a photo is successfully retrieved (DATA_URI) from Library oder Album not from Camera
     function onPhotoURISuccess(imageURI) 
     {
