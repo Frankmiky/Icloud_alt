@@ -53,7 +53,7 @@
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI 
-      console.log(imageURI);
+      //console.log(imageURI);
  
       // Get image handle
       //
