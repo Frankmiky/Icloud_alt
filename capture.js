@@ -5,17 +5,12 @@
     
     // Wait for PhoneGap to connect with the device
     //
-   // document.addEventListener("deviceready",onDeviceReady,false);
+      document.addEventListener("deviceready",onDeviceReady,false);
     
      //create a directoy
         
-      function init()
-      {
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-            alert("Satrt...!!")
-      }
+      //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
     
-
       function onRequestFileSystemSuccess(fileSystem)
       { 
         alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
@@ -73,8 +68,9 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       alert("Location of picture:" + imageData);
-     
       
+       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+           
        // convert the String imageData to a FileEntry
          var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          
