@@ -84,7 +84,7 @@
     function capturePhotoWithFile() {
         navigator.camera.getPicture(onPhotoFileSuccess, onFail,
         { quality: 50 ,
-          destinationType: destinationType.DATA_URL,
+          destinationType: destinationType.FILE_URI,
           targetWidth: 60,
           targetHeight:60,
           saveToPhotoAlbum: true});
