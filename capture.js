@@ -8,21 +8,17 @@
       document.addEventListener("deviceready",onDeviceReady,false);
     
      //create a directoy
-        
-      //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+     //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
     
       function onRequestFileSystemSuccess(fileSystem)
       { 
-        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
-        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
         var entry=fileSystem.root; 
-        entry.getDirectory("mesFichiers", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+        entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
       } 
         
       function onGetDirectorySuccess(dir)
       { 
          picturesStore = dir;
-         alert("Created dir "+dir.name);
          console.log("Created dir "+dir.name);
       } 
     
@@ -58,7 +54,6 @@
       var date=""
       var d = new Date();
       date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear()+"-"+ d.getHours()+"-"+d.getMinutes()+"-"+d.getSeconds();
-      alert(date);
       // Get image handle
       console.log(JSON.stringify(imageData));
       // Get image handle
@@ -67,9 +62,8 @@
       smallImage.style.display = 'block';
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
-      alert("Location of picture:" + imageData);
       
-       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
            
        // convert the String imageData to a FileEntry
          var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
@@ -81,7 +75,6 @@
          //call back functions
         function successCallback(entry) {
             console.log("New Path: " + entry.fullPath);
-            alert("New Path of the new File: " + entry.fullPath);
         }
         
         function failCallback(error) {
