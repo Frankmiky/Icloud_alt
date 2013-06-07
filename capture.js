@@ -1,5 +1,6 @@
  var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
+    var picturesStore;
  
     // Wait for PhoneGap to connect with the device
     //
@@ -53,12 +54,13 @@
         
       function onGetDirectorySuccess(dir)
       { 
+         picturesStore = dir;
          alert("Created dir "+dir.name);
          console.log("Created dir "+dir.name);
           // convert the String imageData to a FileEntry
          var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          
-          fileEntry.copyTo(dir,"date.jpg",successCallback,failCallback);
+          fileEntry.copyTo(picturesStore,date.toString()+".jpg",successCallback,failCallback);
          
          //call back functions
         function successCallback(entry) {
