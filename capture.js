@@ -1,6 +1,6 @@
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
- 
+    var picturesStore;
     // Wait for PhoneGap to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
@@ -11,7 +11,26 @@
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
- 
+    
+    //create a directoy for pictures of the App
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+
+      function onRequestFileSystemSuccess(fileSystem)
+      { 
+        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
+        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
+        var entry=fileSystem.root; 
+        entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+      } 
+        
+      function onGetDirectorySuccess(dir)
+      { 
+          
+         alert("Created dir "+dir.name));
+         console.log("Created dir "+dir.name); 
+         picturesStore = dir;
+        
+      }
     // Called when a photo is successfully retrieved DATA_URL
     function onPhotoDataSuccess(imageData)
     {
@@ -29,7 +48,7 @@
     {
       var date=""
       var d = new Date();
-      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear();
+      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear()+"-"+ d.getHours()+"-"+d.getMinutes()+"-"+d.getSeconds();
       alert(date);
       // Get image handle
       console.log(JSON.stringify(imageData));
@@ -40,24 +59,10 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       alert("Location of picture:" + imageData);
-      //create a directoy
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-
-      function onRequestFileSystemSuccess(fileSystem)
-      { 
-        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
-        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
-        var entry=fileSystem.root; 
-        entry.getDirectory("monFichier", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
-      } 
-        
-      function onGetDirectorySuccess(dir)
-      { 
-          // convert the String imageData to a FileEntry
+      // convert the String imageData to a FileEntry
          var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
-         alert("Created dir "+dir.name+ "Resultat de substring: "+imageData.substring(imageData.lastIndexOf('/')+1));
-         console.log("Created dir "+dir.name); 
-         fileEntry.copyTo(dir,"file_copy.jpg",successCallback,failCallback);
+         
+          fileEntry.copyTo(picturesStore,date+".jpg",successCallback,failCallback);
          
          //call back functions
         function successCallback(entry) {
@@ -68,6 +73,7 @@
         function failCallback(error) {
             alert("Dommage! Copie echouee"+error.code);
         }
+      
       } 
 
       function onGetDirectoryFail(error) 
