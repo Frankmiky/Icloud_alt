@@ -9,8 +9,11 @@
     
      //create a directoy
         
-     
-      
+      function init()
+      {
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+      }
+    
 
       function onRequestFileSystemSuccess(fileSystem)
       { 
@@ -37,7 +40,6 @@
     // PhoneGap is ready to be used!
     function onDeviceReady() 
     { 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
