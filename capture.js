@@ -66,12 +66,14 @@
       smallImage.style.display = 'block';
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
-      alert("Location of picture:" + imageData);
+     
       
        // convert the String imageData to a FileEntry
-         var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
+         var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          
           fileEntry.copyTo(picturesStore,date.toString()+".jpg",successCallback,failCallback);
+          
+           alert("Location of picture:" + imageData);
          
          //call back functions
         function successCallback(entry) {
