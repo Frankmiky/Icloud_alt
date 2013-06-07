@@ -29,7 +29,7 @@
     {
       var date=""
       var d = new Date();
-      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear();
+      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear()+"-"+ d.getHours()+"-"+d.getMinutes()+"-"+d.getSeconds();
       alert(date);
       // Get image handle
       console.log(JSON.stringify(imageData));
@@ -48,13 +48,27 @@
         alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
         alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
         var entry=fileSystem.root; 
-        entry.getDirectory("monFichier", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+        entry.getDirectory("monFichiers", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
       } 
         
       function onGetDirectorySuccess(dir)
       { 
          alert("Created dir "+dir.name);
-         console.log("Created dir "+dir.name); 
+         console.log("Created dir "+dir.name);
+          // convert the String imageData to a FileEntry
+         var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
+         
+          fileEntry.copyTo(dir,"date.jpg",successCallback,failCallback);
+         
+         //call back functions
+        function successCallback(entry) {
+            console.log("New Path: " + entry.fullPath);
+            alert("New Path of the new File: " + entry.fullPath);
+        }
+        
+        function failCallback(error) {
+            alert("Dommage! Copie echouee"+error.code);
+        }
       } 
     
       function onGetDirectoryFail(error) 
