@@ -27,7 +27,7 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
+    
     <preference name="permissions"                value="none"/>
     <!--uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /-->
 
