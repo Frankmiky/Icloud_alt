@@ -1,6 +1,30 @@
- var pictureSource;   // picture source
+    var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
     var picturesStore;
+    
+     //create a directoy
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+
+      function onRequestFileSystemSuccess(fileSystem)
+      { 
+        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
+        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
+        var entry=fileSystem.root; 
+        entry.getDirectory("mesFichiers", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+      } 
+        
+      function onGetDirectorySuccess(dir)
+      { 
+         picturesStore = dir;
+         alert("Created dir "+dir.name);
+         console.log("Created dir "+dir.name);
+      } 
+    
+      function onGetDirectoryFail(error) 
+      {
+        alert("Error creating directory "+error.code);
+        console.log("Error creating directory "+error.code); 
+      } 
  
     // Wait for PhoneGap to connect with the device
     //
@@ -41,23 +65,8 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       alert("Location of picture:" + imageData);
-      //create a directoy
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-
-      function onRequestFileSystemSuccess(fileSystem)
-      { 
-        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
-        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
-        var entry=fileSystem.root; 
-        entry.getDirectory("monFichiers", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
-      } 
-        
-      function onGetDirectorySuccess(dir)
-      { 
-         picturesStore = dir;
-         alert("Created dir "+dir.name);
-         console.log("Created dir "+dir.name);
-          // convert the String imageData to a FileEntry
+      
+       // convert the String imageData to a FileEntry
          var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          
           fileEntry.copyTo(picturesStore,date.toString()+".jpg",successCallback,failCallback);
@@ -71,13 +80,7 @@
         function failCallback(error) {
             alert("Dommage! Copie echouee"+error.code);
         }
-      } 
-    
-      function onGetDirectoryFail(error) 
-      {
-        alert("Error creating directory "+error.code);
-        console.log("Error creating directory "+error.code); 
-      } 
+     
     }
  
     // Called when a photo is successfully retrieved (DATA_URI) from Library oder Album not from Camera
