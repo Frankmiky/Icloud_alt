@@ -10,9 +10,8 @@
     { 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-    }
-    
-    //create a directoy for pictures of the App
+        
+        //create a directoy for pictures of the App
       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
 
       function onRequestFileSystemSuccess(fileSystem)
@@ -35,7 +34,10 @@
         alert("Error creating directory "+error.code);
         console.log("Error creating directory "+error.code); 
       } 
-      
+        
+    }//End of ondeviceReady()
+    
+    
     // Called when a photo is successfully retrieved DATA_URL
     function onPhotoDataSuccess(imageData)
     {
