@@ -27,6 +27,10 @@
     // Called when a photo is successfully retrieved DATA_URI
     function onPhotoFileSuccess(imageData) 
     {
+      var date=""
+      var d = new Date();
+      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear();
+      alert(date);
       // Get image handle
       console.log(JSON.stringify(imageData));
       // Get image handle
@@ -35,6 +39,7 @@
       smallImage.style.display = 'block';
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
+      alert("Location of picture:" + imageData);
     }
  
     // Called when a photo is successfully retrieved (DATA_URI) from Library oder Album not from Camera
