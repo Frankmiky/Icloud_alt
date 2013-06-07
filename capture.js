@@ -8,12 +8,8 @@
    // document.addEventListener("deviceready",onDeviceReady,false);
     
      //create a directoy
-        window.onload()= function()
-        {
-         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-         pictureSource=navigator.camera.PictureSourceType;
-         destinationType=navigator.camera.DestinationType;
-        }
+        
+     
       
 
       function onRequestFileSystemSuccess(fileSystem)
@@ -41,6 +37,7 @@
     // PhoneGap is ready to be used!
     function onDeviceReady() 
     { 
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
