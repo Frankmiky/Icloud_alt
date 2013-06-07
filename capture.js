@@ -1,6 +1,6 @@
-    var pictureSource;   // picture source
+ var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
-    var picturesStore;
+ 
     // Wait for PhoneGap to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
@@ -10,34 +10,8 @@
     { 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-        
-        //create a directoy for pictures of the App
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
-
-      function onRequestFileSystemSuccess(fileSystem)
-      { 
-        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
-        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
-        var entry=fileSystem.root; 
-        entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
-      } 
-        
-      function onGetDirectorySuccess(dir)
-      {  
-         alert("Created dir "+dir.name));
-         console.log("Created dir "+dir.name); 
-         picturesStore = dir;
-      }
-      
-      function onGetDirectoryFail(error) 
-      {
-        alert("Error creating directory "+error.code);
-        console.log("Error creating directory "+error.code); 
-      } 
-        
-    }//End of ondeviceReady()
-    
-    
+    }
+ 
     // Called when a photo is successfully retrieved DATA_URL
     function onPhotoDataSuccess(imageData)
     {
@@ -55,7 +29,7 @@
     {
       var date=""
       var d = new Date();
-      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear()+"-"+ d.getHours()+"-"+d.getMinutes()+"-"+d.getSeconds();
+      date=""+d.getDate()+"-"+ (d.getMonth()+1) +"-"+d.getFullYear();
       alert(date);
       // Get image handle
       console.log(JSON.stringify(imageData));
@@ -66,22 +40,30 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       alert("Location of picture:" + imageData);
-      // convert the String imageData to a FileEntry
-         var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
-         
-          fileEntry.copyTo(picturesStore,"date.jpg",successCallback,failCallback);
-         
-         //call back functions
-        function successCallback(entry) {
-            console.log("New Path: " + entry.fullPath);
-            alert("New Path of the new File: " + entry.fullPath);
-        }
+      //create a directoy
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+
+      function onRequestFileSystemSuccess(fileSystem)
+      { 
+        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
+        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
+        var entry=fileSystem.root; 
+        entry.getDirectory("monFichier", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+      } 
         
-        function failCallback(error) {
-            alert("Dommage! Copie echouee"+error.code);
-        }
-       
+      function onGetDirectorySuccess(dir)
+      { 
+         alert("Created dir "+dir.name);
+         console.log("Created dir "+dir.name); 
+      } 
+    
+      function onGetDirectoryFail(error) 
+      {
+        alert("Error creating directory "+error.code);
+        console.log("Error creating directory "+error.code); 
+      } 
     }
+ 
     // Called when a photo is successfully retrieved (DATA_URI) from Library oder Album not from Camera
     function onPhotoURISuccess(imageURI) 
     {
@@ -126,4 +108,3 @@
     function onFail(message) {
       alert('Failed because: ' + message);
     }
- 
