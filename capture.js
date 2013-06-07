@@ -73,11 +73,21 @@
     //
     function capturePhotoWithData() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 ,destinationType: destinationType.DATA_URL});
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail,
+        { quality: 50 ,
+          destinationType: destinationType.DATA_URL,
+          targetWidth: 60,
+          targetHeight:60,
+          saveToPhotoAlbum: true});
     }
  
     function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: destinationType.FILE_URI });
+        navigator.camera.getPicture(onPhotoFileSuccess, onFail,
+        { quality: 50 ,
+          destinationType: destinationType.DATA_URL,
+          targetWidth: 60,
+          targetHeight:60,
+          saveToPhotoAlbum: true});
     }
     
     // A button will call this function
