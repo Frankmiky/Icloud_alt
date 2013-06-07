@@ -77,8 +77,8 @@
         { quality: 50 ,
           destinationType: destinationType.DATA_URL,
           targetWidth: 60,
-          targetHeight:60,
-          saveToPhotoAlbum: true});
+          targetHeight:60
+        });
     }
  
     function capturePhotoWithFile() {
@@ -86,8 +86,8 @@
         { quality: 50 ,
           destinationType: destinationType.FILE_URI,
           targetWidth: 60,
-          targetHeight:60,
-          saveToPhotoAlbum: true});
+          targetHeight:60
+        });
     }
     
     // A button will call this function
