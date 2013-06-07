@@ -40,6 +40,28 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       alert("Location of picture:" + imageData);
+      //create a directoy
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+
+      function onRequestFileSystemSuccess(fileSystem)
+      { 
+        alert('Nom Du Syteme de Fichier:    '+fileSystem.name);
+        alert('Nom De la Racine du Syteme de Fichier:    '+fileSystem.root);
+        var entry=fileSystem.root; 
+        entry.getDirectory("monFichier", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+      } 
+        
+      function onGetDirectorySuccess(dir)
+      { 
+         alert("Created dir "+dir.name);
+         console.log("Created dir "+dir.name); 
+      } 
+    
+      function onGetDirectoryFail(error) 
+      {
+        alert("Error creating directory "+error.code);
+        console.log("Error creating directory "+error.code); 
+      } 
     }
  
     // Called when a photo is successfully retrieved (DATA_URI) from Library oder Album not from Camera
