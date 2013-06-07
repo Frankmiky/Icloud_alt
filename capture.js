@@ -57,7 +57,7 @@
          var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
          alert("Created dir "+dir.name+ "Resultat de substring: "+imageData.substring(imageData.lastIndexOf('/')+1));
          console.log("Created dir "+dir.name); 
-         fileEntry.copyTo(dir,"file_copy.jpeg",successCallback,failCallback);
+         fileEntry.copyTo(dir,"file_copy.jpg",successCallback,failCallback);
          
          //call back functions
         function successCallback(entry) {
