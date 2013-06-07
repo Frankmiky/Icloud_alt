@@ -85,8 +85,8 @@
         navigator.camera.getPicture(onPhotoFileSuccess, onFail,
         { quality: 50 ,
           destinationType: destinationType.FILE_URI,
-          targetWidth: 60,
-          targetHeight:60
+          targetWidth: 100,
+          targetHeight:100
         });
     }
     
