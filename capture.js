@@ -33,7 +33,7 @@
     //
     function onPhotoFileSuccess(imageData) {
       // Get image handle
-      //console.log(JSON.stringify(imageData));
+      console.log(JSON.stringify(imageData));
       
        // Get image handle
       //
@@ -53,7 +53,7 @@
     //
     function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI 
-      // console.log(imageURI);
+      console.log(imageURI);
  
       // Get image handle
       //
