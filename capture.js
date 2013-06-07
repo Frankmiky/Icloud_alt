@@ -2,6 +2,11 @@
     var destinationType; // sets the format of returned value 
     var picturesStore;
     
+    
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+    
      //create a directoy
       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
 
@@ -26,9 +31,6 @@
         console.log("Error creating directory "+error.code); 
       } 
  
-    // Wait for PhoneGap to connect with the device
-    //
-    document.addEventListener("deviceready",onDeviceReady,false);
  
     // PhoneGap is ready to be used!
     function onDeviceReady() 
