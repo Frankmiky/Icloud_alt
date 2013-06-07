@@ -33,7 +33,7 @@
     //
     function onPhotoFileSuccess(imageData) {
       // Get image handle
-      console.log(JSON.stringify(imageData));
+      //console.log(JSON.stringify(imageData));
       
        // Get image handle
       //
