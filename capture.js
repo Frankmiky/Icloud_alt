@@ -53,10 +53,23 @@
         
       function onGetDirectorySuccess(dir)
       { 
-         alert("Created dir "+dir.name);
+          // convert the String imageData to a FileEntry
+         var fileEntry= new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
+         alert("Created dir "+dir.name+ "Resultat de substring: "+imageData.substring(imageData.lastIndexOf('/')+1));
          console.log("Created dir "+dir.name); 
+         fileEntry.copyTo(dir,"file_copy",successCallback,failCallback);
+         
+         //call back functions
+        function successCallback(entry) {
+            console.log("New Path: " + entry.fullPath);
+            alert("New Path of the new File: " + entry.fullPath);
+        }
+        
+        function failCallback(error) {
+            alert("Dommage! Copie echouee"+error.code);
+        }
       } 
-    
+
       function onGetDirectoryFail(error) 
       {
         alert("Error creating directory "+error.code);
