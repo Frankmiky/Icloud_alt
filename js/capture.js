@@ -22,7 +22,7 @@
         document.addEventListener("online", onOnline, false);
         document.addEventListener("menubutton", onExit, false);
        
-        //$("#btn").hide();
+        $("#btn").hide();
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         //create a directoy
@@ -35,6 +35,7 @@
     }
     function onExit()
     {
+    	alert("Le menu bouton a ete pressé");
         console.log("The menu was clicked...");
     	if(menuOpen) {
 			console.log("close the menu");
@@ -46,7 +47,7 @@
 			menuOpen = true;
 		}
         //alert("Le Back bouton a ete pressé");
-        //$("#btn").show();
+        $("#btn").show();
     }
     
     function onRequestFileSystemSuccess(fileSystem)
