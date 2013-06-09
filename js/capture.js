@@ -7,7 +7,7 @@
     function onLoad()
     {
         document.addEventListener("deviceready",onDeviceReady,false);
-        document.addEventListener("online", onOnline, false);
+        document.addEventListener("online", onOnlin, false);
         document.addEventListener("menubutton", onExit, false);
     }
     
@@ -21,12 +21,13 @@
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
     }
      // Handle the online event
-    function onOnline() 
+    function onOnlin() 
     {
         alert("The Device is online");
     }
     function onExit()
     {
+        alert("Le menu bouton a ete pressé");
         $("#btn").show();
     }
     
