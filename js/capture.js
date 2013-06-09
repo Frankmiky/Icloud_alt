@@ -8,7 +8,7 @@
     {
         document.addEventListener("deviceready",onDeviceReady,false);
         document.addEventListener("online", onOnline, false);
-        document.addEventListener("exitbutton", onExit, false);
+        document.addEventListener("menubutton", onExit, false);
     }
     
     // PhoneGap is ready to be used!
