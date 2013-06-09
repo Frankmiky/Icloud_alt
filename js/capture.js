@@ -15,13 +15,9 @@
     
     // PhoneGap is ready to be used!
     function onDeviceReady()
-    { 
-        console.log("Business time...");
-        menuDiv = document.querySelector("#menu");
-        
+    {
         document.addEventListener("online", onOnline, false);
         document.addEventListener("menubutton", onExit, false);
-       
         $("#btn").hide();
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
@@ -35,19 +31,17 @@
     }
     function onExit()
     {
-    	alert("Le menu bouton a ete pressé");
-        console.log("The menu was clicked...");
-    	if(menuOpen) {
-			console.log("close the menu");
-			menuDiv.style.display="none";
-			menuOpen = false;
-		} else {
-			console.log("open the menu");
-			menuDiv.style.display="block";
-			menuOpen = true;
-		}
-        //alert("Le Back bouton a ete pressé");
-        $("#btn").show();
+    	if(menuOpen)
+    	{
+    	   $("#btn").hide();
+    	   menuOpen = true;
+    	}
+    	else
+    	{
+    	  $("#btn").show();
+    	  menuOpen = false;
+    	}
+        
     }
     
     function onRequestFileSystemSuccess(fileSystem)
