@@ -14,7 +14,7 @@
       { 
         var entry=fileSystem.root; 
         entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
-        alert("1:Creation de IcloudStore dans onRequestFileSystemSuccess");
+        alert("2:Creation de IcloudStore dans onRequestFileSystemSuccess");
       } 
         
       function onGetDirectorySuccess(dir)
@@ -36,6 +36,8 @@
     { 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+        alert("1:Dans OndeviceReady, appel de RequestFileSystem");
     }
  
     // Called when a photo is successfully retrieved DATA_URL
@@ -65,8 +67,7 @@
       // Show the captured photo ,The inline CSS rules are used to resize the image
       smallImage.src = imageData;
       
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
-      alert("2:Suite du Code apres onRequestFileSystemSuccess");
+     
            
        // convert the String imageData to a FileEntry
          var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
