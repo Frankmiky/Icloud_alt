@@ -129,4 +129,10 @@
     {
         console.log('Failed because: ' + message);
     }
+    // Exit for the App
+    function exit()
+    {
+       navigator.app.exitApp();
+    }
+    
     
