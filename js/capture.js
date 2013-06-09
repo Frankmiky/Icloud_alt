@@ -12,8 +12,9 @@
     }
     
     // PhoneGap is ready to be used!
-    function onDeviceReady() 
+    function onDeviceReady()
     { 
+        $("#btn").hide();
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         //create a directoy
@@ -26,7 +27,7 @@
     }
     function onExit()
     {
-    
+        $("#btn").show();
     }
     
     function onRequestFileSystemSuccess(fileSystem)
