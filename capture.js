@@ -4,7 +4,10 @@
     
     
     // Wait for PhoneGap to connect with the device
-    document.addEventListener("deviceready",onDeviceReady,false); 
+    function onLoad()
+    {
+        document.addEventListener("deviceready",onDeviceReady,false);    
+    }
     
     // PhoneGap is ready to be used!
     function onDeviceReady() 
@@ -58,14 +61,9 @@
         smallImage.style.display = 'block';
         // Show the captured photo ,The inline CSS rules are used to resize the image
         smallImage.src = imageData;
-        
-        
-        
+            
         // convert the String imageData to a FileEntry
-        var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
-        alert("4: Nom du fichier a creer"+imageData);
-        alert("5: picturesStore"+picturesStore);
-        
+        var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);        
         fileEntry.copyTo(picturesStore,date.toString()+".jpg",successCallback,failCallback);
         
         //call back functions
