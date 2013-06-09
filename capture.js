@@ -13,7 +13,8 @@
       function onRequestFileSystemSuccess(fileSystem)
       { 
         var entry=fileSystem.root; 
-        entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+        entry.getDirectory("iCloudStore", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
+        alert("1:Creation de IcloudStore dans onRequestFileSystemSuccess");
       } 
         
       function onGetDirectorySuccess(dir)
@@ -64,6 +65,7 @@
       smallImage.src = imageData;
       
       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+      alert("2:Suite du Code apres onRequestFileSystemSuccess");
            
        // convert the String imageData to a FileEntry
          var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
