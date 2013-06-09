@@ -21,6 +21,7 @@
       { 
          picturesStore = dir;
          console.log("Created dir "+dir.name);
+          alert("3:Creation de IcloudStore"+picturesStore);
       } 
     
       function onGetDirectoryFail(error) 
@@ -69,6 +70,9 @@
            
        // convert the String imageData to a FileEntry
          var fileEntry = new FileEntry(imageData.substring(imageData.lastIndexOf('/')+1),imageData);
+         alert("4: Nom du fichier a creer"+imageData);
+         alert("5: picturesStore"+picturesStore);
+    
          
          fileEntry.copyTo(picturesStore,date.toString()+".jpg",successCallback,failCallback);
           
