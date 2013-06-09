@@ -8,6 +8,7 @@
     {
         document.addEventListener("deviceready",onDeviceReady,false);
         document.addEventListener("online", onOnline, false);
+        document.addEventListener("exitbutton", onExit, false);
     }
     
     // PhoneGap is ready to be used!
@@ -22,6 +23,10 @@
     function onOnline() 
     {
         alert("The Device is online");
+    }
+    function onExit()
+    {
+        
     }
     
     function onRequestFileSystemSuccess(fileSystem)
