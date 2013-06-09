@@ -6,16 +6,23 @@
     // Wait for PhoneGap to connect with the device
     function onLoad()
     {
+        document.addEventListener("online", onOnline, false);
         document.addEventListener("deviceready",onDeviceReady,false);    
     }
     
     // PhoneGap is ready to be used!
     function onDeviceReady() 
     { 
+        alert("PhoneGap is ready to be used!");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         //create a directoy
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+    }
+     // Handle the online event
+    function onOnline() 
+    {
+        alert("The Device is online");
     }
     
     function onRequestFileSystemSuccess(fileSystem)
