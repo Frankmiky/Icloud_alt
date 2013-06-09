@@ -34,12 +34,12 @@
     	if(menuOpen)
     	{
     	   $("#btn").hide();
-    	   menuOpen = true;
+    	   menuOpen = false;
     	}
     	else
     	{
     	  $("#btn").show();
-    	  menuOpen = false;
+    	  menuOpen = true;
     	}
         
     }
