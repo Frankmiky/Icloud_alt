@@ -7,8 +7,9 @@
     function onLoad()
     {
         document.addEventListener("deviceready",onDeviceReady,false);
-        document.addEventListener("online", onOnlin, false);
-        document.addEventListener("menubutton", onExit, false);
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("backbutton", onExit, false);
+        //document.addEventListener("menubutton", onExit, false);
     }
     
     // PhoneGap is ready to be used!
@@ -21,13 +22,13 @@
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
     }
      // Handle the online event
-    function onOnlin() 
+    function onOnline() 
     {
         alert("The Device is online");
     }
     function onExit()
     {
-        alert("Le menu bouton a ete pressé");
+        alert("Le Back bouton a ete pressé");
         $("#btn").show();
     }
     
