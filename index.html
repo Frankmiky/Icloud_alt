@@ -5,16 +5,6 @@
     <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/capture.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.10.1.min.js"></script>
-    <style>
-    div#menu {
-  		width: 30%;
-  		background-color: yellow;
-  		position:absolute;
-  		bottom: 0;
-  		left: 35%;
-  		display:none;
-  	}
-	</style>
   </head>
   
   <body onload="onLoad()">
@@ -23,17 +13,13 @@
         <p>
           Try hitting your menu button...
         </p>
-       
-      <div id="menu">
-      	<a href="">Option One</a><br/>
-      	<a href="">Option Two</a>
-      </div>
       <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
       <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
       <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
       <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
       <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
       <img style="display:none;" id="largeImage" src="" />
+      
       <footer>
         <button id="btn" onclick="exit();">Exit</button> <br>
       </footer>
