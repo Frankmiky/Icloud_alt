@@ -2,20 +2,27 @@
     var destinationType;// sets the format of returned value 
     var picturesStore; // contain all the pictures for app
     
+    var menuOpen = false;
+    var menuDiv = "";
+    
     
     // Wait for PhoneGap to connect with the device
     function onLoad()
     {
         document.addEventListener("deviceready",onDeviceReady,false);
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("backbutton", onExit, false);
         //document.addEventListener("menubutton", onExit, false);
     }
     
     // PhoneGap is ready to be used!
     function onDeviceReady()
     { 
-        $("#btn").hide();
+        console.log("Business time...");
+        menuDiv = document.querySelector("#menu");
+        
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("menubutton", onExit, false);
+       
+        //$("#btn").hide();
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         //create a directoy
@@ -28,8 +35,18 @@
     }
     function onExit()
     {
-        alert("Le Back bouton a ete pressé");
-        $("#btn").show();
+        console.log("The menu was clicked...");
+    	if(menuOpen) {
+			console.log("close the menu");
+			menuDiv.style.display="none";
+			menuOpen = false;
+		} else {
+			console.log("open the menu");
+			menuDiv.style.display="block";
+			menuOpen = true;
+		}
+        //alert("Le Back bouton a ete pressé");
+        //$("#btn").show();
     }
     
     function onRequestFileSystemSuccess(fileSystem)
