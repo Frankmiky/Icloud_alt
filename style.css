@@ -1,1 +1,8 @@
-kij
+div#menu {
+        	width: 100%;
+      		background-color: blue;
+      		position:absolute;
+      		bottom: 0;
+      		left: 35%;
+      		display:none;
+	       }
